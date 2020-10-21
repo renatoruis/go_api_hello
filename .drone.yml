@@ -4,25 +4,12 @@ type: kubernetes
 name: default
 
 steps:
-- name: Docker Build
+- name: test
   image: docker:dind
   volumes:
   - name: dockersock
-    path: /var/run/docker.sock
+    path: /var/run
   commands:
   - ls -lah
+  - sleep 5 # give docker enough time to start
   - docker ps -a
-
-- name: Docker login
-  image: docker:dind
-  volumes:
-  - name: dockersock
-    path: /var/run/docker.sock
-  commands:
-  - ls -lah
-  - docker login
-  
-volumes:
-- name: dockersock
-  host:
-    path: /var/run/docker.sock
