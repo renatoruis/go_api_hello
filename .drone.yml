@@ -1,0 +1,19 @@
+---
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+- name: Docker Build
+  image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - ls -lah
+  - docker ps -a
+
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
