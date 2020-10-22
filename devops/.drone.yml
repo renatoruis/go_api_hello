@@ -31,13 +31,15 @@ steps:
       from_secret: telegram_user_id
     message: >
       {{#success build.status}}
-        Build {{build.number}} deu bom!  \o/
-        Pipeline {{repo.name}}
-        Link: {{build.link}}
+        Build {{build.number}} deu bom!  \o/ <br>
+        Olha quem commitou: {{commit.author}} <br>
+        Pipeline {{repo.name}} <br>
+        Link: {{build.link}} <br>
       {{else}}
         Build {{build.number}} deu ruim  :(
-        Pipeline {{repo.name}}
-        Link: {{build.link}}
+        Olha quem commitou: {{commit.author}} <br>
+        Pipeline {{repo.name}} <br>
+        Link: {{build.link}} <br>
       {{/success}}
 
 # services:
