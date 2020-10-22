@@ -18,15 +18,17 @@ steps:
   settings:
     username: renatoruis
     password:
-      - from_secret: dockerpass
+      from_secret: dockerpass
     repo: renatoruis/goapiteste
     dockerfile: devops/Dockerfile
 
 - name: send telegram notification
   image: appleboy/drone-telegram
   settings:
-    token: 1234567
-    to: 1234567
+    token:
+      from_secret: telegram_token
+    to:
+      from_secret: telegram_user_id
     message: >
       {{#success build.status}}
         build {{build.number}} succeeded. Good job.
