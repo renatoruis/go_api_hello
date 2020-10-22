@@ -17,7 +17,8 @@ steps:
   image: plugins/docker
   settings:
     username: renatoruis
-    password: senhafalsa
+    password:
+      - from_secret: dockerpass
     repo: renatoruis/goapiteste
     dockerfile: devops/Dockerfile
 
