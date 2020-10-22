@@ -4,34 +4,34 @@ type: kubernetes
 name: default
 
 steps:
-  - name: build go
-    image: golang
-    environment:
-      GOOS: linux
-      GOARCH: amd64
-      CGO_ENABLED: 0
-    commands:
-    - go build -a -installsuffix cgo -o main ../
+- name: build go
+  image: golang
+  environment:
+    GOOS: linux
+    GOARCH: amd64
+    CGO_ENABLED: 0
+  commands:
+  - go build -a -installsuffix cgo -o main ../
 
-  - name: docker  
-    image: plugins/docker
-    settings:
-      username: renatoruis
-      password: senhafalsa
-      repo: renatoruis/goapiteste
-      dockerfile: path/to/Dockerfile
-  
-  - name: send telegram notification
-    image: appleboy/drone-telegram
-    settings:
-      token: xxxxxxxxxx
-      to: telegram_user_id
-      message: >
-        {{#success build.status}}
-          build {{build.number}} succeeded. Good job.
-        {{else}}
-          build {{build.number}} failed. Fix me please.
-        {{/success}}
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: renatoruis
+    password: senhafalsa
+    repo: renatoruis/goapiteste
+    dockerfile: path/to/Dockerfile
+
+- name: send telegram notification
+  image: appleboy/drone-telegram
+  settings:
+    token: xxxxxxxxxx
+    to: telegram_user_id
+    message: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job.
+      {{else}}
+        build {{build.number}} failed. Fix me please.
+      {{/success}}
 
 services:
 - name: docker
