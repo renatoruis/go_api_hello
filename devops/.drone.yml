@@ -31,9 +31,13 @@ steps:
       from_secret: telegram_user_id
     message: >
       {{#success build.status}}
-        build {{build.number}} succeeded. Good job.
+        
+        Pipeline {{repo.name}}
+        Link: {{build.link}}
       {{else}}
-        build {{build.number}} failed. Fix me please.
+        Build {{build.number}} deu ruim  :(
+        Pipeline {{repo.name}}
+        Link: {{build.link}}
       {{/success}}
 
 # services:
