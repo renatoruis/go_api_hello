@@ -21,7 +21,7 @@ steps:
       from_secret: dockerpass
     repo: renatoruis/goapiteste
     dockerfile: devops/Dockerfile
-    tags: {{build.number}}
+    auto_tag: true
 
 - name: send telegram notification
   image: appleboy/drone-telegram
