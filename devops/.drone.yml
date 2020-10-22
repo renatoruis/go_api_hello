@@ -13,25 +13,25 @@ steps:
   commands:
   - go build -a -installsuffix cgo -o main .
 
-- name: docker  
-  image: plugins/docker
-  settings:
-    username: renatoruis
-    password: senhafalsa
-    repo: renatoruis/goapiteste
-    dockerfile: devops/Dockerfile
+# - name: docker  
+#   image: plugins/docker
+#   settings:
+#     username: renatoruis
+#     password: senhafalsa
+#     repo: renatoruis/goapiteste
+#     dockerfile: devops/Dockerfile
 
-- name: send telegram notification
-  image: appleboy/drone-telegram
-  settings:
-    token: 1234567
-    to: 1234567
-    message: >
-      {{#success build.status}}
-        build {{build.number}} succeeded. Good job.
-      {{else}}
-        build {{build.number}} failed. Fix me please.
-      {{/success}}
+# - name: send telegram notification
+#   image: appleboy/drone-telegram
+#   settings:
+#     token: 1234567
+#     to: 1234567
+#     message: >
+#       {{#success build.status}}
+#         build {{build.number}} succeeded. Good job.
+#       {{else}}
+#         build {{build.number}} failed. Fix me please.
+#       {{/success}}
 
 services:
 - name: docker
